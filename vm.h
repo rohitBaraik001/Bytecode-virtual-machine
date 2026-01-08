@@ -15,6 +15,7 @@ typedef struct{
     int valid[MEM_SIZE]; // is the current value stored is valid or not
     int ret_stack[RET_STACK_SIZE];
     int rsp;
+    long instruction_count;
 }VM;
 
 void vm_init(VM *vm,int *bytecode);

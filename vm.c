@@ -25,6 +25,7 @@ void vm_init(VM *vm,int *bytecode){
     vm->pc = 0;
     vm->running = 1;
     vm->rsp = -1;
+    vm->instruction_count = 0;
     for(int i=0;i<MEM_SIZE;i++){
         vm->memory[i] = 0; //clear the memory
         vm->valid[i] = 0; //nothing is valid initialy
@@ -34,6 +35,7 @@ void vm_init(VM *vm,int *bytecode){
 void vm_run(VM *vm){
     while(vm->running){
         int instruction = vm->bytecode[vm->pc++];
+        vm->instruction_count++;
         switch(instruction){
             case OP_PUSH:{
                 int value = vm->bytecode[vm->pc++];
